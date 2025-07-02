@@ -1,0 +1,1029 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>复古生日贺卡 - 千千的23岁生日</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Noto+Serif+SC:wght@400;600&family=Inter:wght@300;400;500;600&family=Caveat:wght@700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-blue: #3a86ff;
+            --light-blue: #4cc9f0;
+            --dark-blue: #2a6fdb;
+            --accent-blue: #4895ef;
+            --background-blue: #f0f7ff;
+            --text-dark: #1a1a2e;
+            --text-light: #4a5568;
+            --white: #ffffff;
+            --shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+            --pink: #ff7eb9;
+
+            /* 复古信封颜色 */
+            --envelope-brown: #d2a679;
+            --envelope-dark: #b8864b;
+            --envelope-seal: #c56e33;
+            --paper: #f7f3e9;
+            --paper-line: rgba(0, 0, 0, 0.1);
+            --paper-edge: rgba(0, 0, 0, 0.05);
+        }
+
+        body {
+            font-family: 'Inter', 'Noto Serif SC', sans-serif;
+            background: linear-gradient(135deg, #f5e9d8 0%, #f0e6d0 100%);
+            color: var(--text-dark);
+            line-height: 1.7;
+            overflow-x: hidden;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            padding: 20px;
+            position: relative;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            width: 100%;
+            padding-top: 80px;
+        }
+
+        /* 顶部标题区域 */
+        header {
+            text-align: center;
+            padding: 40px 20px;
+            position: relative;
+            margin-bottom: 40px;
+        }
+
+        .title-container {
+            position: relative;
+            display: inline-block;
+        }
+
+        .title-animate {
+            font-family: 'Dancing Script', cursive;
+            font-size: 6rem;
+            font-weight: 700;
+            background: linear-gradient(45deg, #8b4513, #a0522d);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: 2px;
+            position: relative;
+            display: inline-block;
+            animation: titleEntrance 1.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+            opacity: 0;
+            transform: translateY(50px) scale(0.8);
+            text-shadow: 0 5px 15px rgba(139, 69, 19, 0.1);
+        }
+
+        @keyframes titleEntrance {
+            0% {
+                opacity: 0;
+                transform: translateY(50px) scale(0.8);
+                text-shadow: 0 0 0 rgba(139, 69, 19, 0);
+            }
+
+            60% {
+                opacity: 1;
+                transform: translateY(-15px) scale(1.1);
+                text-shadow: 0 15px 30px rgba(139, 69, 19, 0.3);
+            }
+
+            100% {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+                text-shadow: 0 5px 15px rgba(139, 69, 19, 0.2);
+            }
+        }
+
+        .birthday-date {
+            font-size: 1.8rem;
+            color: #5d4037;
+            margin-top: 15px;
+            font-weight: 400;
+            animation: fadeIn 1.5s ease-out 0.5s forwards;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* 照片区域 */
+        .photo-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin: 60px 0;
+            padding: 0 20px;
+        }
+
+        .photo-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 16px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+            transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #8b5a2b, #a67b5b);
+            animation: fadeUp 1s ease-out forwards;
+            opacity: 0;
+            transform: translateY(30px);
+            border: 8px solid #f5f0e6;
+        }
+
+        @keyframes fadeUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* 比例控制 */
+        .photo-item:nth-child(1),
+        .photo-item:nth-child(3) {
+            aspect-ratio: 16/9;
+        }
+
+        .photo-item:nth-child(2) {
+            aspect-ratio: 3/4;
+        }
+
+        .photo-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        .photo-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.8s cubic-bezier(0.165, 0.84, 0.44, 1);
+            filter: sepia(0.3) brightness(0.95);
+        }
+
+        /* 悬停效果 */
+        .photo-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(139, 69, 19, 0.3);
+        }
+
+        .photo-item:hover img {
+            transform: scale(1.05);
+            filter: sepia(0.1) brightness(1);
+        }
+
+        .photo-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent);
+            color: white;
+            padding: 20px;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.5s ease;
+            font-family: 'Noto Serif SC', serif;
+        }
+
+        .photo-item:hover .photo-caption {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* 信封区域 - 复古风格 */
+        .envelope-section {
+            max-width: 700px;
+            margin: 0 auto 100px;
+            position: relative;
+            height: 500px;
+        }
+
+        .envelope-container {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            cursor: pointer;
+            perspective: 1000px;
+        }
+
+        .envelope {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            transform-style: preserve-3d;
+            transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            transform-origin: center bottom;
+        }
+
+        /* 信封背面 */
+        .envelope-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: var(--envelope-dark);
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            z-index: 1;
+            transform: rotateX(0deg);
+            backface-visibility: hidden;
+            border: 1px solid rgba(0, 0, 0, 0.1);
+        }
+
+        /* 信封正面 */
+        .envelope-front {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: var(--envelope-brown);
+            border-radius: 8px;
+            box-shadow: 0 20px 40px rgba(139, 69, 19, 0.2);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            backface-visibility: hidden;
+            z-index: 2;
+            clip-path: polygon(0 0, 100% 0, 100% 85%, 50% 100%, 0 85%);
+            border: 1px solid rgba(0, 0, 0, 0.15);
+        }
+
+        /* 信封翻盖 */
+        .envelope-flap {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #c19a6b, #b8864b);
+            border-radius: 8px;
+            clip-path: polygon(50% 0, 100% 40%, 100% 100%, 0 100%, 0 40%);
+            transform-origin: top;
+            transition: transform 0.8s 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            z-index: 3;
+            box-shadow: 0 -3px 10px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(0, 0, 0, 0.1);
+        }
+
+        /* 信封封口 */
+        .envelope-seal {
+            position: absolute;
+            top: 40%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 80px;
+            height: 80px;
+            background: var(--envelope-seal);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 2rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            z-index: 4;
+            transition: transform 0.3s ease;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .envelope-text {
+            position: absolute;
+            top: 60%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: #5d4037;
+            font-size: 2.2rem;
+            text-align: center;
+            text-shadow: 0 2px 4px rgba(255, 255, 255, 0.5);
+            z-index: 2;
+            font-weight: 600;
+            letter-spacing: 1px;
+            font-family: 'Noto Serif SC', serif;
+        }
+
+        /* 收件人信息 */
+        .recipient-info {
+            position: absolute;
+            top: 30px;
+            left: 30px;
+            font-family: 'Caveat', cursive;
+            color: #5d4037;
+            font-size: 1.8rem;
+            z-index: 2;
+            text-shadow: 0 1px 3px rgba(255, 255, 255, 0.5);
+            transition: opacity 0.5s ease;
+        }
+
+        /* 打开提示 - 透明浮动效果 */
+        .open-prompt {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            padding: 15px 30px;
+            border-radius: 50px;
+            color: rgba(93, 64, 55, 0.85);
+            font-weight: 500;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            z-index: 10;
+            pointer-events: none;
+            opacity: 0.8;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translate(-50%, -50%);
+            }
+
+            50% {
+                transform: translate(-50%, -55%);
+            }
+        }
+
+        .envelope:hover .open-prompt {
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        /* 信纸效果 - 复古质感 */
+        .letter-paper {
+            position: absolute;
+            width: 90%;
+            height: 85%;
+            background: var(--paper);
+            border-radius: 4px;
+            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.1);
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            z-index: 1;
+            transition: all 1.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            transform-origin: top center;
+            transform: translateY(100%) rotateX(90deg);
+            opacity: 0;
+            overflow-y: auto;
+            top: 5%;
+            left: 5%;
+            border: 1px solid rgba(0, 0, 0, 0.1);
+        }
+
+        /* 纸张纹理 - 横线效果（修复版） */
+        .paper-texture {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image:
+                repeating-linear-gradient(0deg,
+                    transparent,
+                    transparent 29px,
+                    var(--paper-line) 29px,
+                    var(--paper-line) 30px
+                );
+            background-size: 100% 30px;
+            opacity: 0.5;
+            z-index: 0;
+        }
+
+        .paper-edge {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, transparent 95%, var(--paper-edge) 100%);
+            pointer-events: none;
+        }
+
+        .letter-content {
+            font-size: 1.15rem;
+            line-height: 2.0;
+            color: #5d4037;
+            position: relative;
+            opacity: 0;
+            transition: opacity 1s ease 1.5s;
+            font-family: 'Caveat', cursive;
+            font-size: 1.6rem;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" opacity="0.05"><rect x="0" y="0" width="100" height="100" fill="none" stroke="%235d4037" stroke-width="1" stroke-dasharray="2,2"/></svg>');
+            background-size: 20px 20px;
+            padding: 0 10px;
+            z-index: 2;
+        }
+
+        .letter-content p {
+            margin-bottom: 30px;
+            position: relative;
+            padding-bottom: 5px;
+        }
+
+        .signature {
+            text-align: right;
+            margin-top: 50px;
+            font-style: italic;
+            font-weight: 600;
+            color: #8b4513;
+            font-size: 1.8rem;
+            font-family: 'Caveat', cursive;
+        }
+
+        /* 信封打开状态 */
+        .envelope-container.open .envelope-flap {
+            transform: rotateX(180deg);
+        }
+
+        .envelope-container.open .letter-paper {
+            transform: translateY(0) rotateX(0);
+            opacity: 1;
+            z-index: 5;
+        }
+
+        .envelope-container.open .letter-content {
+            opacity: 1;
+        }
+
+        .envelope-container.open .open-prompt {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .envelope-container.open .envelope-seal {
+            transform: translate(-50%, -50%) scale(0);
+        }
+
+        /* 隐藏收件人信息在打开后 */
+        .envelope-container.open .recipient-info {
+            opacity: 0;
+        }
+
+        /* 祝福区域 */
+        .wishes {
+            text-align: center;
+            padding: 80px 20px;
+            background: linear-gradient(120deg, rgba(139, 69, 19, 0.08) 0%, rgba(178, 134, 92, 0.08) 100%);
+            border-radius: 24px;
+            margin: 60px 0 100px;
+            animation: fadeIn 1s ease-out 1.2s forwards;
+            opacity: 0;
+            transform: translateY(30px);
+            border: 1px solid rgba(139, 69, 19, 0.1);
+        }
+
+        .wishes h2 {
+            font-size: 2.5rem;
+            margin-bottom: 40px;
+            color: #5d4037;
+            font-family: 'Noto Serif SC', serif;
+        }
+
+        .wishes-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 30px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .wish-item {
+            background: #f7f3e9;
+            padding: 35px 25px;
+            border-radius: 16px;
+            box-shadow: 0 8px 20px rgba(139, 69, 19, 0.1);
+            transition: all 0.3s ease;
+            border: 1px solid rgba(139, 69, 19, 0.1);
+        }
+
+        .wish-item:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 30px rgba(139, 69, 19, 0.2);
+        }
+
+        .wish-item i {
+            font-size: 2.8rem;
+            color: #8b4513;
+            margin-bottom: 20px;
+        }
+
+        .wish-item h3 {
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+            color: #5d4037;
+        }
+
+        .wish-item p {
+            color: #7d5d47;
+        }
+
+        /* 页脚 */
+        footer {
+            text-align: center;
+            padding: 40px 20px;
+            color: #5d4037;
+            font-size: 1rem;
+            border-top: 1px solid rgba(139, 69, 19, 0.1);
+            margin-top: auto;
+            background: rgba(245, 233, 216, 0.5);
+        }
+
+        /* 音乐播放器 - 右上角悬浮（优化版） */
+        .music-player {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background: rgba(245, 233, 216, 0.9);
+            border-radius: 50px;
+            box-shadow: 0 5px 15px rgba(139, 69, 19, 0.3);
+            backdrop-filter: blur(5px);
+            padding: 10px 15px;
+            transition: all 0.3s ease;
+            border: 2px solid rgba(139, 69, 19, 0.2);
+            max-width: 200px;
+        }
+
+        .music-player:hover {
+            transform: scale(1.05);
+            background: rgba(245, 233, 216, 0.95);
+            box-shadow: 0 8px 20px rgba(139, 69, 19, 0.4);
+        }
+
+        .player-controls {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            width: 100%;
+        }
+
+        .vinyl-container {
+            position: relative;
+            width: 50px;
+            height: 50px;
+            cursor: pointer;
+        }
+
+        .vinyl {
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, #333, #111);
+            border-radius: 50%;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 0 8px rgba(0, 0, 0, 0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            animation: rotate 10s linear infinite;
+            animation-play-state: paused;
+        }
+
+        .vinyl-center {
+            position: absolute;
+            width: 12px;
+            height: 12px;
+            background: #f5f0e6;
+            border-radius: 50%;
+            z-index: 2;
+        }
+
+        .vinyl-label {
+            width: 25px;
+            height: 25px;
+            background: #c56e33;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 8px;
+            text-align: center;
+            padding: 2px;
+            font-family: 'Caveat', cursive;
+        }
+
+        .vinyl-groove {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: inset 0 0 15px rgba(0, 0, 0, 0.8);
+        }
+
+        .music-info {
+            font-size: 0.9rem;
+            color: #5d4037;
+            text-align: center;
+            max-width: 120px;
+            font-weight: 500;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .play-btn {
+            background: none;
+            border: none;
+            color: #5d4037;
+            font-size: 1.2rem;
+            cursor: pointer;
+            padding: 5px;
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+        }
+
+        .play-btn:hover {
+            background: rgba(139, 69, 19, 0.1);
+        }
+
+        @keyframes rotate {
+            from {
+                transform: rotate(0deg);
+            }
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* 响应式调整 */
+        @media (max-width: 768px) {
+            .music-player {
+                top: 10px;
+                right: 10px;
+                padding: 8px 12px;
+            }
+            .vinyl-container {
+                width: 40px;
+                height: 40px;
+            }
+            .music-info {
+                font-size: 0.8rem;
+                max-width: 100px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .music-player {
+                transform: scale(0.9);
+                transform-origin: top right;
+                top: 5px;
+                right: 5px;
+            }
+        }
+
+        /* 生日拉花效果 */
+        .confetti {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 9999;
+        }
+
+        .confetti-piece {
+            position: absolute;
+            width: 10px;
+            height: 30px;
+            background: #ffd300;
+            top: 0;
+            opacity: 0;
+            animation: confetti 5s ease-in-out infinite;
+        }
+
+        @keyframes confetti {
+            0% {
+                opacity: 0;
+                transform: translateY(0) rotate(0deg);
+            }
+
+            10% {
+                opacity: 1;
+            }
+
+            100% {
+                opacity: 0;
+                transform: translateY(100vh) rotate(720deg);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 音乐播放器（优化版） -->
+    <div class="music-player">
+        <div class="player-controls">
+            <button class="play-btn" id="playBtn">
+                <i class="fas fa-play"></i>
+            </button>
+            <div class="vinyl-container" id="vinylControl">
+                <div class="vinyl">
+                    <div class="vinyl-groove"></div>
+                    <div class="vinyl-label">生日歌</div>
+                    <div class="vinyl-center"></div>
+                </div>
+            </div>
+            <div class="music-info" id="musicInfo">点击播放音乐</div>
+        </div>
+    </div>
+
+    <!-- 生日拉花容器 -->
+    <div class="confetti" id="confetti"></div>
+
+    <div class="container">
+        <!-- 顶部标题区域 -->
+        <header>
+            <div class="title-container">
+                <h1 class="title-animate">Happy Birthday</h1>
+            </div>
+            <p class="birthday-date">2025年6月28日 · 致千千的23岁生日</p>
+        </header>
+
+        <!-- 照片区域 -->
+        <div class="photo-gallery">
+            <!-- 第一张照片 - 16:9 -->
+            <div class="photo-item">
+                <div class="photo-inner">
+                    <img src="1.jpg">
+                    <div class="photo-caption">
+                        <h3>美丽小朋友</h3>
+                        <p>生日快乐！！！</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 第二张照片 - 3:4 -->
+            <div class="photo-item">
+                <div class="photo-inner">
+                    <img src="2.jpg">
+                    <div class="photo-caption">
+                        <h3>最好的我们</h3>
+                        <p>要一直一直一直在一起</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 第三张照片 - 16:9 -->
+            <div class="photo-item">
+                <div class="photo-inner">
+                    <img src="3.jpg">
+                    <div class="photo-caption">
+                        <h3>闪耀公主</h3>
+                        <p>公主万万岁</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 信封区域 -->
+        <div class="envelope-section">
+            <div class="envelope-container">
+                <div class="envelope">
+                    <!-- 信封背面 -->
+                    <div class="envelope-back"></div>
+
+                    <!-- 信封正面 -->
+                    <div class="envelope-front">
+                        <div class="envelope-flap"></div>
+                        <div class="open-prompt">点击此处打开信封</div>
+                        <div class="envelope-seal">
+                            <i class="fas fa-heart"></i>
+                        </div>
+                        <div class="envelope-text">给千千的信</div>
+
+                        <!-- 收件人信息 -->
+                        <div class="recipient-info">To Qianqian</div>
+                    </div>
+
+                    <!-- 信纸 -->
+                    <div class="letter-paper">
+                        <div class="paper-texture"></div>
+                        <div class="paper-edge"></div>
+                        <div class="letter-content">
+                            <p>亲爱的千千，</p>
+
+                            <p>哈喽宝贝，long time no see，想我了吗，嘿嘿，现在的千千已经是23岁的千千啦，不错，还是一位可爱的小朋友。</p>
+
+                            <p>过去的一年，很荣幸的是你的22岁我亲眼见证了一半，并且深有感触的感觉你成长了好多好多，但不幸的是，你的成长有好多都是我亲手导致你的无可奈何，说实话如果这半年把我换做你，我觉得我都不一定能接受下来这么多的事情，好在，好在你还是坚定的选择我，也好在我们都还在，好在我们终于又走回了正轨。</p>
+
+                            <p>我们在去年里我们还达成好几个协议，就像历史书中说的那样，每一个协约不仅仅是一份协约一份承诺，更重要的是这份协约背后代表着的重要转折。我们也是一样，半同居的生活我最开始真的很难适应，学校的事我处理不完，你一个人我也放心不下，学校杂活和家务活还有我们上半年无休止的争吵压得我喘不过气，说实话，我想过放弃，也表现出过不作为，是你一次次的妥协，一份份的协约把我从深渊中拉出，你说你不想让我这么累，你也能承担一些，我真的很感动，我也慢慢的改变了我的思维，想着你的好，慢慢的再重新有所作为，谢.谢你宝贝，谢谢你一直如此坚定。</p>
+
+                            <p>而且在这一年里，你用实际行动教会了我一件非常重要的事，那就是沟通。不只是今年，其实近两年我一直不太不知道如何向你表达我对你的怨言，我对你的想法，相比于最开始我们的激情开麦，最近我怕说出来会带来更多的麻烦，我怕麻烦，所以我一次次的对不起，一次次的沉默，但是你却一次次的破冰主动和我说话主动问我情况，你就像是那早上六七点钟的太阳给我们的迷雾拨开，说白了，我们这半年能扛过来要不是你我们应该早完蛋了，所以我醒悟过来之后我才知道你的不容易。所以我也希望我能多和宝贝沟通，多给你讲我的想法，我们提早预案提早解决！向我的小太阳小榜样看齐！</p>
+
+                            <p>谢谢你宝贝，谢谢你走进我的生命，让我懂得了什么是真正的爱。未来，无论平坦还是崎岖，我都会紧握你的手，不再松开，陪你一起走过每一个瞬间。总之，艰难的一岁已经远去，希望宝贝在新的一岁里能保持好的心态，认认真真的备考，来年我们好好的旅游，好好的玩耍，去想去的地方，做你想做的事，运势好好，活力多多，开开心心，和我相爱一万年~</p>
+
+                            <div class="signature">
+                                <p>永远爱你的</p>
+                                <p>好杰</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 祝福区域 -->
+        <div class="wishes">
+            <h2>祝：</h2>
+            <div class="wishes-grid">
+                <div class="wish-item">
+                    <i class="fas fa-gift"></i>
+                    <h3>运势好好</h3>
+                    <p>每天都有小惊喜，每天都有好心态！</p>
+                </div>
+                <div class="wish-item">
+                    <i class="fas fa-star"></i>
+                    <h3>万事胜意</h3>
+                    <p>愿宝贝的每个梦想都能实现，每个目标都能达成！</p>
+                </div>
+                <div class="wish-item">
+                    <i class="fas fa-heart"></i>
+                    <h3>甜甜蜜蜜 </h3>
+                    <p>愿我们永远甜蜜如初，时间也无法侵蚀的那种！</p>
+                </div>
+                <div class="wish-item">
+                    <i class="fas fa-laugh-beam"></i>
+                    <h3>永驻童心</h3>
+                    <p>希望宝贝能开开心心，永远都充满活力，一直当我的小朋友！</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>献给最爱的宝贝 · 爱意永存</p>
+        <p>© 侵权声明 | 仅属于 千千</p>
+    </footer>
+
+    <!-- 音频元素 -->
+    <audio id="birthdayMusic" loop>
+         <source src="https://incompetech.com/music/royalty-free/mp3-royaltyfree/Spring%20Dawn.mp3" type="audio/mpeg">
+         <source src="https://audionautix.com/Music/WhisperingWind.mp3" type="audio/mpeg">
+    </audio>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // 信封展开效果
+            const envelopeContainer = document.querySelector('.envelope-container');
+            const openPrompt = document.querySelector('.open-prompt');
+            const recipientInfo = document.querySelector('.recipient-info');
+
+            envelopeContainer.addEventListener('click', function () {
+                this.classList.add('open');
+                openPrompt.style.opacity = '0';
+                openPrompt.style.pointerEvents = 'none';
+            });
+
+            // 滚动动画
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            document.querySelectorAll('.photo-item, .wish-item').forEach(item => {
+                observer.observe(item);
+            });
+
+            // 添加悬停效果增强视觉反馈
+            const envelope = document.querySelector('.envelope');
+            envelope.addEventListener('mouseenter', () => {
+                envelope.style.transform = 'scale(1.03)';
+            });
+            envelope.addEventListener('mouseleave', () => {
+                envelope.style.transform = 'scale(1)';
+            });
+
+            // ================= 音乐播放器功能（优化版） =================
+            const playBtn = document.getElementById('playBtn');
+            const vinyl = document.querySelector('.vinyl');
+            const audio = document.getElementById('birthdayMusic');
+            const musicInfo = document.getElementById('musicInfo');
+            let musicPlaying = false;
+
+            // 播放按钮点击事件
+            playBtn.addEventListener('click', function() {
+                if (audio.paused) {
+                    playMusic();
+                } else {
+                    pauseMusic();
+                }
+            });
+
+            // 唱片点击事件（也可以控制播放）
+            vinyl.parentElement.addEventListener('click', function() {
+                if (audio.paused) {
+                    playMusic();
+                } else {
+                    pauseMusic();
+                }
+            });
+
+            // 播放音乐函数
+            function playMusic() {
+                audio.play()
+                    .then(() => {
+                        musicPlaying = true;
+                        vinyl.style.animationPlayState = 'running';
+                        playBtn.innerHTML = '<i class="fas fa-pause"></i>';
+                        musicInfo.textContent = '正在播放';
+                        musicInfo.style.color = '#8b4513';
+                    })
+                    .catch(error => {
+                        console.error('播放失败:', error);
+                        musicInfo.textContent = '播放失败，请点击重试';
+                        musicInfo.style.color = '#c56e33';
+                    });
+            }
+
+            // 暂停音乐函数
+            function pauseMusic() {
+                audio.pause();
+                musicPlaying = false;
+                vinyl.style.animationPlayState = 'paused';
+                playBtn.innerHTML = '<i class="fas fa-play"></i>';
+                musicInfo.textContent = '已暂停';
+                musicInfo.style.color = '#5d4037';
+            }
+
+            // 音频播放结束事件
+            audio.addEventListener('ended', function() {
+                pauseMusic();
+            });
+
+            // 音频错误处理
+            audio.addEventListener('error', function() {
+                musicInfo.textContent = '音乐加载失败';
+                musicInfo.style.color = '#c56e33';
+                playBtn.style.display = 'none';
+            });
+
+            // 添加用户交互后自动播放
+            document.body.addEventListener('click', function initPlay() {
+                // 如果音乐还没播放过，尝试播放
+                if (!musicPlaying) {
+                    playMusic();
+                }
+                // 移除事件监听器
+                document.body.removeEventListener('click', initPlay);
+            });
+
+            // 生日拉花效果
+            const confettiContainer = document.getElementById('confetti');
+            const colors = ['#ffd300', '#ff69b4', '#00ff7f', '#1e90ff'];
+
+            function createConfetti() {
+                const confetti = document.createElement('div');
+                confetti.classList.add('confetti-piece');
+                confetti.style.left = Math.random() * window.innerWidth + 'px';
+                confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                confetti.style.animationDuration = (Math.random() * 2 + 3) + 's';
+                confetti.style.animationDelay = Math.random() * 5 + 's';
+                confettiContainer.appendChild(confetti);
+
+                // 一段时间后移除拉花
+                setTimeout(() => {
+                    confetti.remove();
+                }, 10000);
+            }
+
+            for (let i = 0; i < 100; i++) {
+                setTimeout(createConfetti, i * 100);
+            }
+        });
+    </script>
+</body>
+</html>
